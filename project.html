@@ -4,9 +4,14 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@800;900&family=Red+Hat+Text:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="app.css"></head>
-<body data-page="home"><div class="wrap">
-<header class="top"><h1>Ad review</h1></header>
-<p class="lead">Pick a project. Accept, adjust or reject each piece; Claude checks your decisions every few minutes, saves what you accept, deletes what you reject and remakes what you ask to adjust.</p>
+<body data-page="project"><div class="wrap">
+<header class="top"><a class="back" href="./">← Projects</a><h1 id="pname">Project</h1>
+<span class="who"><label for="who">Reviewing as</label><input id="who" type="text" maxlength="40" placeholder="Your name"></span>
+<span class="sync" id="sync">Connecting…</span></header>
 <p class="banner" id="banner" hidden><b>View only.</b> To accept, adjust or reject, open the review link Gustavo sent you (it includes a private key).</p>
-<main class="projects" id="projects"></main>
-</div><script src="config.js"></script><script src="app.js"></script></body></html>
+<nav class="tabs" id="tabs" role="tablist" aria-label="Status"></nav>
+<div class="filters" id="filters"></div>
+<main class="grid" id="grid"></main>
+</div>
+<dialog class="focusbox" id="focusbox" aria-label="Piece details"><div class="fb"></div></dialog>
+<script src="config.js"></script><script src="app.js"></script></body></html>
