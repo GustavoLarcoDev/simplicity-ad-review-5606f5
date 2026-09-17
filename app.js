@@ -160,10 +160,19 @@
       var p = data.pieces.filter(function (x) { return x.id === current; })[0]; if (!p) return;
       var s = st(p), draft = { estado: intent || s.estado, motivos: s.motivos.slice() };
       var gone = s.estado === 'out' && (p.deleted || (s.reply && s.reply.tipo === 'descartada')) || !p.media.length;
-      var media = el('div', { class: 'fb-media' }, gone ? [el('div', { class: 'gone', text: 'Deleted' })] : p.media.map(function (mm) {
+      // one format at a time (stacking them looked like the image repeating); switcher when there are several
+      var media = el('div', { class: 'fb-media' });
+      function showFormat(i) {
+        media.textContent = '';
+        if (gone) { media.appendChild(el('div', { class: 'gone', text: 'Deleted' })); return; }
+        var mm = p.media[i];
+        if (p.media.length > 1) media.appendChild(el('div', { class: 'formats', role: 'group', 'aria-label': 'Format' }, p.media.map(function (x, j) {
+          return el('button', { type: 'button', 'aria-pressed': String(j === i), text: (x.label || ('Format ' + (j + 1))).split(' · ')[0], onclick: function () { showFormat(j); } });
+        })));
         var node = mm.type === 'video' ? el('video', { src: mm.src, poster: mm.poster || null, controls: '', muted: '', loop: '', playsinline: '' }) : el('img', { src: mm.src, alt: p.id + ': ' + p.title });
-        return el('figure', {}, [node, el('figcaption', { text: mm.label || '' })]);
-      }));
+        media.appendChild(el('figure', {}, [node, el('figcaption', { text: mm.label || '' })]));
+      }
+      showFormat(0);
       var info = el('div', { class: 'fb-info' });
       info.appendChild(el('div', { class: 'fb-head' }, [
         el('div', { style: 'flex:1;display:flex;flex-direction:column;gap:8px' }, [
