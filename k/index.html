@@ -1,0 +1,489 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Simplicity Batch K</title>
+<meta name="description" content="Twenty 4:5 static ads for Simplicity Software in five styles, to approve, adjust or reject with comments.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@700;800;900&family=Red+Hat+Text:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  --ground:#EEF3F7; --surface:#FFFFFF; --ink:#0A1420; --muted:#55687A; --line:#D3E0EA; --inset:#F4F8FB;
+  --accent:#1878A8; --accent-ink:#FFFFFF; --focus:#6EC8E6;
+  --ok:#1E7A52; --ok-soft:#E2F2EA; --warn:#9A5B00; --warn-soft:#FBEFD9; --out:#A12F3C; --out-soft:#F7E3E6;
+  --shadow:0 1px 2px rgba(10,20,32,.05),0 10px 28px rgba(10,20,32,.06);
+  --display:"Red Hat Display","Avenir Next",system-ui,-apple-system,sans-serif;
+  --body:"Red Hat Text","Avenir Next",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#08111B; --surface:#101E2B; --ink:#E8F1F7; --muted:#9FB2C3; --line:#203548; --inset:#0C1824;
+    --accent:#6EC8E6; --accent-ink:#08111B; --focus:#6EC8E6;
+    --ok:#62C99A; --ok-soft:#12301F; --warn:#F0B35A; --warn-soft:#352711; --out:#F08591; --out-soft:#3A1A20;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 28px rgba(0,0,0,.28);
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#08111B; --surface:#101E2B; --ink:#E8F1F7; --muted:#9FB2C3; --line:#203548; --inset:#0C1824;
+  --accent:#6EC8E6; --accent-ink:#08111B; --focus:#6EC8E6;
+  --ok:#62C99A; --ok-soft:#12301F; --warn:#F0B35A; --warn-soft:#352711; --out:#F08591; --out-soft:#3A1A20;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 28px rgba(0,0,0,.28);
+}
+*{box-sizing:border-box}
+body{background:var(--ground);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.55;padding-inline:16px;padding-block:0 64px}
+.wrap{max-width:1180px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);font-weight:800;letter-spacing:-.015em;line-height:1.08;margin:0;text-wrap:balance}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+
+.top{display:flex;flex-direction:column;gap:14px;padding-block:28px 22px;border-bottom:3px solid var(--accent)}
+.brand img{height:44px;width:auto;display:block}
+.logo-dark{display:none!important}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]) .logo-light{display:none!important}
+  :root:not([data-theme="light"]) .logo-dark{display:block!important}
+}
+:root[data-theme="dark"] .logo-light{display:none!important}
+:root[data-theme="dark"] .logo-dark{display:block!important}
+.top h1{font-size:clamp(30px,5vw,46px);font-weight:900}
+.top p{margin:0;color:var(--muted);max-width:70ch}
+.top p b{color:var(--ink)}
+.facts{display:flex;flex-wrap:wrap;gap:8px}
+.fact{font-size:13px;font-weight:600;padding:4px 10px;border-radius:999px;background:var(--surface);border:1px solid var(--line)}
+.fact b{color:var(--accent)}
+
+.tally{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--ground);display:flex;flex-wrap:wrap;align-items:center;gap:8px 18px;padding-block:12px;border-bottom:1px solid var(--line)}
+.tally .t{display:flex;align-items:center;gap:6px;font-weight:600;font-variant-numeric:tabular-nums}
+.dot{width:10px;height:10px;border-radius:50%}
+.dot.ok{background:var(--ok)} .dot.warn{background:var(--warn)} .dot.out{background:var(--out)} .dot.none{background:var(--line)}
+.sync{margin-left:auto;font-size:13px;color:var(--muted)}
+
+section{margin-top:40px}
+.sec-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 14px;margin-bottom:16px}
+.sec-head h2{font-size:clamp(22px,3vw,30px)}
+.sec-head p{margin:0;color:var(--muted)}
+
+.piece{background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:24px;padding:20px;margin-bottom:20px}
+.piece[data-state="ok"]{border-color:var(--ok);box-shadow:0 0 0 2px var(--ok) inset,var(--shadow)}
+.piece[data-state="warn"]{border-color:var(--warn);box-shadow:0 0 0 2px var(--warn) inset,var(--shadow)}
+.piece[data-state="out"]{border-color:var(--out);opacity:.75}
+.shots{display:flex;gap:12px;align-items:flex-start;flex-wrap:wrap}
+.shot{margin:0;flex:1 1 200px;min-width:0;max-width:100%}
+.shot img,.shot video{display:block;width:100%;height:auto;border-radius:8px;border:1px solid var(--line);background:var(--inset)}
+.shot.tall{flex:0 1 280px}
+.shot figcaption{font-size:12px;color:var(--muted);margin-top:6px;font-variant-numeric:tabular-nums}
+.info{display:flex;flex-direction:column;gap:14px;min-width:0}
+.id-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.pid{font-family:var(--display);font-weight:900;font-size:13px;background:var(--ink);color:var(--surface);padding:3px 8px;border-radius:6px;letter-spacing:.04em}
+.piece h3{font-size:clamp(21px,2.5vw,27px)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:12.5px;font-weight:600;padding:3px 9px;border-radius:999px;border:1px solid var(--line);color:var(--ink);background:var(--inset)}
+.chip.ch{color:var(--accent);border-color:var(--accent);background:transparent}
+.intext{margin:0;padding:10px 12px;border-left:3px solid var(--accent);background:var(--inset);border-radius:0 8px 8px 0;font-size:14px}
+.intext span{display:block}
+.k{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+details{border:1px solid var(--line);border-radius:10px;background:var(--inset)}
+details summary{cursor:pointer;padding:9px 12px;font-weight:600;font-size:14px}
+details .sub{padding:4px 12px 2px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+details pre{margin:0;padding:0 12px 12px;white-space:pre-wrap;font-family:var(--body);font-size:14px;line-height:1.55;overflow-wrap:anywhere}
+.notes-title{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--warn);margin-bottom:4px}
+.notes{margin:0;padding-left:18px;font-size:14px}
+.notes li{margin-bottom:3px}
+
+.decide{border-top:1px dashed var(--line);padding-top:14px;display:flex;flex-direction:column;gap:10px}
+.seg{display:flex;gap:8px;flex-wrap:wrap}
+.seg button{font:inherit;font-weight:700;font-size:14px;padding:8px 14px;border-radius:10px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;min-height:40px}
+.seg button:hover{border-color:var(--ink)}
+.seg button:focus-visible,textarea:focus-visible,summary:focus-visible,video:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.seg button[aria-pressed="true"][data-v="ok"]{background:var(--ok-soft);border-color:var(--ok);color:var(--ok)}
+.seg button[aria-pressed="true"][data-v="warn"]{background:var(--warn-soft);border-color:var(--warn);color:var(--warn)}
+.seg button[aria-pressed="true"][data-v="out"]{background:var(--out-soft);border-color:var(--out);color:var(--out)}
+.decide label{font-size:13px;font-weight:600;color:var(--muted)}
+.decide textarea{font:inherit;font-size:14px;width:100%;min-height:68px;padding:9px 11px;border-radius:10px;border:1.5px solid var(--line);background:var(--inset);color:var(--ink);resize:vertical}
+.saved{font-size:12px;color:var(--muted);min-height:1em}
+.feedback-bar{margin-top:14px;display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;padding:12px 14px;border-radius:12px;border:1.5px solid var(--warn);background:var(--warn-soft);color:var(--ink)}
+.feedback-bar p{margin:0;flex:1 1 320px;font-size:14px}
+.feedback-bar button{font:inherit;font-weight:700;font-size:14px;padding:9px 14px;border-radius:10px;border:0;background:var(--accent);color:var(--accent-ink);cursor:pointer;min-height:40px}
+.feedback-bar button:focus-visible,.copybox textarea:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.copybox{flex:1 1 100%;display:flex;flex-direction:column;gap:6px}
+.copybox label{font-size:13px;font-weight:600;color:var(--muted)}
+.copybox textarea{font:inherit;font-size:13px;width:100%;min-height:150px;padding:9px 11px;border-radius:10px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);resize:vertical}
+.claude-say{display:flex;flex-direction:column;gap:2px;padding:10px 12px;border-radius:10px;border:1.5px solid var(--accent);background:var(--inset);font-size:14px}
+.claude-say .k{color:var(--accent)}
+.claude-say[data-tipo="final"]{border-color:var(--ok)} .claude-say[data-tipo="final"] .k{color:var(--ok)}
+.claude-say[data-tipo="descartada"]{border-color:var(--out)} .claude-say[data-tipo="descartada"] .k{color:var(--out)}
+.ver{font-size:12px;font-weight:700;padding:2px 8px;border-radius:999px;background:var(--accent);color:var(--accent-ink)}
+.how{margin:0;padding:12px 14px;border-radius:10px;background:var(--surface);border:1px solid var(--line);font-size:14px;max-width:80ch}
+.how b{color:var(--ink)}
+.gone{flex:1 1 200px;min-height:180px;display:grid;place-items:center;border:1.5px dashed var(--line);border-radius:8px;color:var(--muted);font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:13px}
+
+.pending{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px 22px}
+.pending ul{margin:0;padding-left:20px;display:grid;gap:12px}
+.pending li b{display:block}
+.pending li span{color:var(--muted)}
+footer{margin-top:40px;color:var(--muted);font-size:13px}
+
+@media (max-width:820px){
+  .piece{grid-template-columns:1fr;padding:16px}
+  .shot.tall{flex:1 1 240px;max-width:320px}
+}
+@media (prefers-reduced-motion:no-preference){
+  .piece{transition:box-shadow .2s,border-color .2s,opacity .2s}
+}
+
+.who{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--muted)}
+.who input{font:inherit;font-size:13px;width:140px;padding:5px 8px;border-radius:8px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink)}
+.who input:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.seg button:disabled,.decide textarea:disabled{opacity:.55;cursor:not-allowed}
+</style>
+</head>
+<body data-batch="K">
+
+
+<div class="wrap">
+  <header class="top">
+    <div class="brand"><img class="logo-light" src="img/logo-light.png" alt="Simplicity Software"><img class="logo-dark" src="img/logo-dark.png" alt="Simplicity Software"></div>
+    <div class="eyebrow">Batch K · 20 ads · five styles</div>
+    <h1>Twenty ads to choose from</h1>
+    <p>Five styles with four ads each, on purpose: what you approve or reject teaches which style, tone and service you like best. All in 4:5 for Facebook, Instagram and LinkedIn, with the bigger logo you asked for on G1.</p>
+    <p class="how"><b>How Claude listens.</b> While the Claude Code terminal stays open, Claude checks this gallery every 5 minutes. <b>Approve</b> copies the piece into a dated <b>Posts</b> folder (e.g. Posts-2026-09-17). <b>Reject</b> deletes it and removes it from this page. <b>Adjust</b> has Claude remake it following your comment and bring it back here as a new, unmarked version. Every decision is logged in <b>aprendizaje/preferencias.md</b>, which the team reads before designing: what you reject is not proposed the same way again, and what you ask to adjust is applied to new pieces. Write your comment before marking, or within 2 minutes after; when you reject, saying why helps it learn better.</p>
+    <div class="facts"><span class="fact">API cost <b>$0</b></span><span class="fact">Format <b>1080×1350</b></span><span class="fact">Full copy in <b>briefs/2026-09-17-tanda-K.md</b></span></div>
+  </header>
+
+  <div class="tally" role="status" aria-live="polite">
+    <span class="t"><span class="dot ok"></span><span id="n-ok">0</span> approved</span>
+    <span class="t"><span class="dot warn"></span><span id="n-warn">0</span> adjust</span>
+    <span class="t"><span class="dot out"></span><span id="n-out">0</span> rejected</span>
+    <span class="t"><span class="dot none"></span><span id="n-none">20</span> unmarked</span>
+    <span class="sync"><span id="sync">Connecting…</span><span id="last-check"></span></span>
+  </div>
+
+  <section>
+    <div class="sec-head"><h2>A · Dark typographic</h2><p>4 ads</p></div>
+    <article class="piece" data-id="K1">
+      <div class="shots"><figure class="shot" style="max-width:440px"><img src="img/K1-v2.jpg" width="1080" height="1080" alt="K1: Your IT, handled." loading="lazy"><figcaption>Square 1:1 · 1080×1080</figcaption></figure></div>
+      <div class="info">
+        <div class="id-row"><span class="pid">K1</span><span class="chip ch">Managed Services</span></div>
+        <h3>Your IT, handled.</h3>
+        <div class="chips"><span class="chip">A · Dark typographic</span><span class="chip">Facebook · Instagram · LinkedIn</span></div>
+        <p class="intext"><span class="k">On the image</span><span>Headline: Your IT, handled. · Subhead: Managed Services and 24/7 support for growing businesses.</span></p>
+        <details><summary>Meta ad copy</summary>
+<div class="sub">Primary text</div><pre>Your business has enough to manage. Our Managed Services and 24/7 support look after the technology.</pre>
+<div class="sub">Headline · Button</div><pre>Managed Services for growing teams · Learn More</pre>
+        </details>
+        <div class="claude-slot"></div>
+        <div class="notes-slot" data-notes="K1"></div>
+      </div>
+    </article>
+    <article class="piece" data-id="K2">
+      <div class="shots"><figure class="shot" style="max-width:440px"><img src="img/K2-v1.jpg" width="1080" height="1350" alt="K2: AI with a job to do" loading="lazy"><figcaption>Feed 4:5 · 1080×1350</figcaption></figure></div>
+      <div class="info">
+        <div class="id-row"><span class="pid">K2</span><span class="chip ch">Custom Software (AI)</span></div>
+        <h3>AI with a job to do</h3>
+        <div class="chips"><span class="chip">A · Dark typographic</span><span class="chip">Facebook · Instagram · LinkedIn</span></div>
+        <p class="intext"><span class="k">On the image</span><span>Headline: AI with a job to do · Subhead: Custom AI tools built around tasks your team already does.</span></p>
+        <details><summary>Meta ad copy</summary>
+<div class="sub">Primary text</div><pre>AI is useful when it takes real work off your team&#x27;s plate. We build custom AI tools for growing businesses.</pre>
+<div class="sub">Headline · Button</div><pre>AI tools built for real work · Learn More</pre>
+        </details>
+        <div class="claude-slot"></div>
+        <div class="notes-slot" data-notes="K2"></div>
+      </div>
+    </article>
+    <article class="piece" data-id="K3">
+      <div class="shots"><figure class="shot" style="max-width:440px"><img src="img/K3-v1.jpg" width="1080" height="1350" alt="K3: 365. Dynamics. Power BI. Azure." loading="lazy"><figcaption>Feed 4:5 · 1080×1350</figcaption></figure></div>
+      <div class="info">
+        <div class="id-row"><span class="pid">K3</span><span class="chip ch">Microsoft Licensing</span></div>
+        <h3>365. Dynamics. Power BI. Azure.</h3>
+        <div class="chips"><span class="chip">A · Dark typographic</span><span class="chip">Facebook · Instagram · LinkedIn</span></div>
+        <p class="intext"><span class="k">On the image</span><span>Headline: 365. / Dynamics. / Power BI. / Azure. · Subhead: Let us handle Microsoft 365, Dynamics, Power BI and Azure licensing.</span></p>
+        <details><summary>Meta ad copy</summary>
+<div class="sub">Primary text</div><pre>We license Microsoft 365, Dynamics, Power BI and Azure. Talk to a technology partner based in Chesterfield, MO.</pre>
+<div class="sub">Headline · Button</div><pre>Microsoft 365, Dynamics, Power BI, Azure · Contact Us</pre>
+        </details>
+        <div class="claude-slot"></div>
+        <div class="notes-slot" data-notes="K3"></div>
+      </div>
+    </article>
+    <article class="piece" data-id="K4">
+      <div class="shots"><figure class="shot" style="max-width:440px"><img src="img/K4-v1.jpg" width="1080" height="1350" alt="K4: Simplicity. It’s in the name." loading="lazy"><figcaption>Feed 4:5 · 1080×1350</figcaption></figure></div>
+      <div class="info">
+        <div class="id-row"><span class="pid">K4</span><span class="chip ch">Brand</span></div>
+        <h3>Simplicity. It’s in the name.</h3>
+        <div class="chips"><span class="chip">A · Dark typographic</span><span class="chip">Facebook · Instagram · LinkedIn</span></div>
+        <p class="intext"><span class="k">On the image</span><span>Headline: Simplicity. / It’s in the name. · Subhead: Our values: Simplicity First, Client Partnership, Excellence, Reliability.</span></p>
+        <details><summary>Meta ad copy</summary>
+<div class="sub">Primary text</div><pre>Simplicity First is one of our four values, along with Client Partnership, Excellence and Reliability.</pre>
+<div class="sub">Headline · Button</div><pre>Simplified IT for growing businesses · Learn More</pre>
+        </details>
+        <div class="claude-slot"></div>
+        <div class="notes-slot" data-notes="K4"></div>
+      </div>
+    </article>
+  </section>
+  <section>
+    <div class="sec-head"><h2>B · Dark vector scene</h2><p>4 ads</p></div>
+    <article class="piece" data-id="K5">
+      <div class="shots"><figure class="shot" style="max-width:440px"><img src="img/K5-v1.jpg" width="1080" height="1350" alt="K5: Is tech slowing your team down?" loading="lazy"><figcaption>Feed 4:5 · 1080×1350</figcaption></figure></div>
+      <div class="info">
+        <div class="id-row"><span class="pid">K5</span><span class="chip ch">Managed Services</span></div>
+        <h3>Is tech slowing your team down?</h3>
+        <div class="chips"><span class="chip">B · Dark vector scene</span><span class="chip">Facebook · Instagram · LinkedIn</span></div>
+        <p class="intext"><span class="k">On the image</span><span>Headline: Is tech slowing your team down? · Subhead: Managed Services for the technology your team uses every day. · Button: Let’s Talk</span></p>
+        <details><summary>Meta ad copy</summary>
+<div class="sub">Primary text</div><pre>When tech gets in the way, the whole team slows down. Our Managed Services look after the tools they use daily.</pre>
+<div class="sub">Headline · Button</div><pre>Keep your team moving · Learn More</pre>
+        </details>
+        <div class="claude-slot"></div>
+        <div class="notes-slot" data-notes="K5"></div>
+      </div>
+    </article>
+    <article class="piece" data-id="K6">
+      <div class="shots"><figure class="shot" style="max-width:440px"><img src="img/K6-v1.jpg" width="1080" height="1350" alt="K6: IT that grows with you" loading="lazy"><figcaption>Feed 4:5 · 1080×1350</figcaption></figure></div>
+      <div class="info">
+        <div class="id-row"><span class="pid">K6</span><span class="chip ch">Managed Services</span></div>
+        <h3>IT that grows with you</h3>
+        <div class="chips"><span class="chip">B · Dark vector scene</span><span class="chip">Facebook · Instagram · LinkedIn</span></div>
+        <p class="intext"><span class="k">On the image</span><span>Headline: IT that grows with you · Subhead: Simplified IT Management for Growing Businesses. · Button: Get in Touch</span></p>
+        <details><summary>Meta ad copy</summary>
+<div class="sub">Primary text</div><pre>As your business adds people and tools, your IT has to keep up. We help growing businesses stay on top of it.</pre>
+<div class="sub">Headline · Button</div><pre>IT for growing businesses · Contact Us</pre>
+        </details>
+        <div class="claude-slot"></div>
+        <div class="notes-slot" data-notes="K6"></div>
+      </div>
+    </article>
+    <article class="piece" data-id="K7">
+      <div class="shots"><figure class="shot" style="max-width:440px"><img src="img/K7-v1.jpg" width="1080" height="1350" alt="K7: Built for teams on the move" loading="lazy"><figcaption>Feed 4:5 · 1080×1350</figcaption></figure></div>
+      <div class="info">
+        <div class="id-row"><span class="pid">K7</span><span class="chip ch">Custom Software (mobile)</span></div>
+        <h3>Built for teams on the move</h3>
+        <div class="chips"><span class="chip">B · Dark vector scene</span><span class="chip">Facebook · Instagram · LinkedIn</span></div>
+        <p class="intext"><span class="k">On the image</span><span>Headline: Built for teams on the move · Subhead: Custom mobile apps for teams who work away from a desk. · Button: Plan Your App</span></p>
+        <details><summary>Meta ad copy</summary>
+<div class="sub">Primary text</div><pre>Crews, drivers and field staff need more than a desktop. We build custom mobile apps for teams on the move.</pre>
+<div class="sub">Headline · Button</div><pre>Custom mobile apps for your team · Learn More</pre>
+        </details>
+        <div class="claude-slot"></div>
+        <div class="notes-slot" data-notes="K7"></div>
+      </div>
+    </article>
+    <article class="piece" data-id="K8">
+      <div class="shots"><figure class="shot" style="max-width:440px"><img src="img/K8-v1.jpg" width="1080" height="1350" alt="K8: Right here in Chesterfield" loading="lazy"><figcaption>Feed 4:5 · 1080×1350</figcaption></figure></div>
+      <div class="info">
+        <div class="id-row"><span class="pid">K8</span><span class="chip ch">Brand (local)</span></div>
+        <h3>Right here in Chesterfield</h3>
+        <div class="chips"><span class="chip">B · Dark vector scene</span><span class="chip">Facebook · Instagram · LinkedIn</span></div>
+        <p class="intext"><span class="k">On the image</span><span>Headline: Right here in Chesterfield · Subhead: Managed Services, Custom Software and Microsoft Licensing, close to home. · Button: Call Us Today</span></p>
+        <details><summary>Meta ad copy</summary>
+<div class="sub">Primary text</div><pre>Simplicity Software is based at 229 Chesterfield Business Pkwy. IT, custom software and Microsoft licensing, close to home.</pre>
+<div class="sub">Headline · Button</div><pre>Technology help in Chesterfield, MO · Call Now</pre>
+        </details>
+        <div class="claude-slot"></div>
+        <div class="notes-slot" data-notes="K8"></div>
+      </div>
+    </article>
+  </section>
+  <section>
+    <div class="sec-head"><h2>C · Simple light illustration</h2><p>4 ads</p></div>
+    <article class="piece" data-id="K9">
+      <div class="shots"><figure class="shot" style="max-width:440px"><img src="img/K9-v1.jpg" width="1080" height="1350" alt="K9: Fewer Monday morning surprises" loading="lazy"><figcaption>Feed 4:5 · 1080×1350</figcaption></figure></div>
+      <div class="info">
+        <div class="id-row"><span class="pid">K9</span><span class="chip ch">Managed Services</span></div>
+        <h3>Fewer Monday morning surprises</h3>
+        <div class="chips"><span class="chip">C · Simple light illustration</span><span class="chip">Facebook · Instagram · LinkedIn</span></div>
+        <p class="intext"><span class="k">On the image</span><span>Headline: Fewer Monday morning surprises · Subhead: Managed Services that look after your everyday technology.</span></p>
+        <details><summary>Meta ad copy</summary>
+<div class="sub">Primary text</div><pre>Start the week with fewer tech problems waiting for you. Our Managed Services look after your everyday technology.</pre>
+<div class="sub">Headline · Button</div><pre>Fewer tech problems on Mondays · Learn More</pre>
+        </details>
+        <div class="claude-slot"></div>
+        <div class="notes-slot" data-notes="K9"></div>
+      </div>
+    </article>
+    <article class="piece" data-id="K10">
+      <div class="shots"><figure class="shot" style="max-width:440px"><img src="img/K10-v1.jpg" width="1080" height="1350" alt="K10: Let customers do it online" loading="lazy"><figcaption>Feed 4:5 · 1080×1350</figcaption></figure></div>
+      <div class="info">
+        <div class="id-row"><span class="pid">K10</span><span class="chip ch">Custom Software (web)</span></div>
+        <h3>Let customers do it online</h3>
+        <div class="chips"><span class="chip">C · Simple light illustration</span><span class="chip">Facebook · Instagram · LinkedIn</span></div>
+        <p class="intext"><span class="k">On the image</span><span>Headline: Let customers do it online · Subhead: Custom web software built for your customers, not just your team.</span></p>
+        <details><summary>Meta ad copy</summary>
+<div class="sub">Primary text</div><pre>Customers expect to get things done online, any time. We build custom web software around what they need.</pre>
+<div class="sub">Headline · Button</div><pre>Web software your customers can use · Learn More</pre>
+        </details>
+        <div class="claude-slot"></div>
+        <div class="notes-slot" data-notes="K10"></div>
+      </div>
+    </article>
+    <article class="piece" data-id="K11">
+      <div class="shots"><figure class="shot" style="max-width:440px"><img src="img/K11-v1.jpg" width="1080" height="1350" alt="K11: Have an app in mind?" loading="lazy"><figcaption>Feed 4:5 · 1080×1350</figcaption></figure></div>
+      <div class="info">
+        <div class="id-row"><span class="pid">K11</span><span class="chip ch">Custom Software</span></div>
+        <h3>Have an app in mind?</h3>
+        <div class="chips"><span class="chip">C · Simple light illustration</span><span class="chip">Facebook · Instagram · LinkedIn</span></div>
+        <p class="intext"><span class="k">On the image</span><span>Headline: Have an app in mind? · Subhead: We build custom web, mobile and AI software.</span></p>
+        <details><summary>Meta ad copy</summary>
+<div class="sub">Primary text</div><pre>An idea for a web, mobile or AI tool is a good place to start. Tell us about it.</pre>
+<div class="sub">Headline · Button</div><pre>Turn your idea into software · Contact Us</pre>
+        </details>
+        <div class="claude-slot"></div>
+        <div class="notes-slot" data-notes="K11"></div>
+      </div>
+    </article>
+    <article class="piece" data-id="K12">
+      <div class="shots"><figure class="shot" style="max-width:440px"><img src="img/K12-v1.jpg" width="1080" height="1350" alt="K12: A license for every desk" loading="lazy"><figcaption>Feed 4:5 · 1080×1350</figcaption></figure></div>
+      <div class="info">
+        <div class="id-row"><span class="pid">K12</span><span class="chip ch">Microsoft Licensing</span></div>
+        <h3>A license for every desk</h3>
+        <div class="chips"><span class="chip">C · Simple light illustration</span><span class="chip">Facebook · Instagram · LinkedIn</span></div>
+        <p class="intext"><span class="k">On the image</span><span>Headline: A license for every desk · Subhead: We license Microsoft 365, Dynamics, Power BI and Azure.</span></p>
+        <details><summary>Meta ad copy</summary>
+<div class="sub">Primary text</div><pre>New desk, new license. We license Microsoft 365, Dynamics, Power BI and Azure for growing businesses.</pre>
+<div class="sub">Headline · Button</div><pre>Microsoft 365 licenses for your team · Contact Us</pre>
+        </details>
+        <div class="claude-slot"></div>
+        <div class="notes-slot" data-notes="K12"></div>
+      </div>
+    </article>
+  </section>
+  <section>
+    <div class="sec-head"><h2>D · Stat, question or list card</h2><p>4 ads</p></div>
+    <article class="piece" data-id="K13">
+      <div class="shots"><figure class="shot" style="max-width:440px"><img src="img/K13-v1.jpg" width="1080" height="1350" alt="K13: Open early? Closing late?" loading="lazy"><figcaption>Feed 4:5 · 1080×1350</figcaption></figure></div>
+      <div class="info">
+        <div class="id-row"><span class="pid">K13</span><span class="chip ch">Managed Services</span></div>
+        <h3>Open early? Closing late?</h3>
+        <div class="chips"><span class="chip">D · Stat, question or list card</span><span class="chip">Facebook · Instagram · LinkedIn</span></div>
+        <p class="intext"><span class="k">On the image</span><span>Stat: 24/7 · Headline: Open early? Closing late? · Subhead: Support that keeps the same hours you do.</span></p>
+        <details><summary>Meta ad copy</summary>
+<div class="sub">Primary text</div><pre>Not every business runs nine to five. Our 24/7 support is there early, late and on weekends.</pre>
+<div class="sub">Headline · Button</div><pre>24/7 support, whatever your hours · Call Now</pre>
+        </details>
+        <div class="claude-slot"></div>
+        <div class="notes-slot" data-notes="K13"></div>
+      </div>
+    </article>
+    <article class="piece" data-id="K14">
+      <div class="shots"><figure class="shot" style="max-width:440px"><img src="img/K14-v1.jpg" width="1080" height="1350" alt="K14: Three ways software can help" loading="lazy"><figcaption>Feed 4:5 · 1080×1350</figcaption></figure></div>
+      <div class="info">
+        <div class="id-row"><span class="pid">K14</span><span class="chip ch">Custom Software</span></div>
+        <h3>Three ways software can help</h3>
+        <div class="chips"><span class="chip">D · Stat, question or list card</span><span class="chip">Facebook · Instagram · LinkedIn</span></div>
+        <p class="intext"><span class="k">On the image</span><span>Headline: Three ways software can help · Points: Web tools for your customers · Mobile apps for your team · AI for repetitive tasks · Subhead: Custom software for growing businesses.</span></p>
+        <details><summary>Meta ad copy</summary>
+<div class="sub">Primary text</div><pre>Custom software can serve your customers, your team, or the repetitive work in between. We build web, mobile and AI tools.</pre>
+<div class="sub">Headline · Button</div><pre>Web, mobile and AI software · Learn More</pre>
+        </details>
+        <div class="claude-slot"></div>
+        <div class="notes-slot" data-notes="K14"></div>
+      </div>
+    </article>
+    <article class="piece" data-id="K15">
+      <div class="shots"><figure class="shot" style="max-width:440px"><img src="img/K15-v1.jpg" width="1080" height="1350" alt="K15: Who do you ask about licenses?" loading="lazy"><figcaption>Feed 4:5 · 1080×1350</figcaption></figure></div>
+      <div class="info">
+        <div class="id-row"><span class="pid">K15</span><span class="chip ch">Microsoft Licensing</span></div>
+        <h3>Who do you ask about licenses?</h3>
+        <div class="chips"><span class="chip">D · Stat, question or list card</span><span class="chip">Facebook · Instagram · LinkedIn</span></div>
+        <p class="intext"><span class="k">On the image</span><span>Question: Who do you ask about licenses? · Subhead: Microsoft 365, Dynamics, Power BI and Azure licensing, from Chesterfield, MO.</span></p>
+        <details><summary>Meta ad copy</summary>
+<div class="sub">Primary text</div><pre>Microsoft 365, Dynamics, Power BI or Azure: when you have a licensing question, call a team based in Chesterfield.</pre>
+<div class="sub">Headline · Button</div><pre>Microsoft licensing, close to home · Call Now</pre>
+        </details>
+        <div class="claude-slot"></div>
+        <div class="notes-slot" data-notes="K15"></div>
+      </div>
+    </article>
+    <article class="piece" data-id="K16">
+      <div class="shots"><figure class="shot" style="max-width:440px"><img src="img/K16-v1.jpg" width="1080" height="1350" alt="K16: Clients served, and counting" loading="lazy"><figcaption>Feed 4:5 · 1080×1350</figcaption></figure></div>
+      <div class="info">
+        <div class="id-row"><span class="pid">K16</span><span class="chip ch">Brand</span></div>
+        <h3>Clients served, and counting</h3>
+        <div class="chips"><span class="chip">D · Stat, question or list card</span><span class="chip">Facebook · Instagram · LinkedIn</span></div>
+        <p class="intext"><span class="k">On the image</span><span>Stat: 500+ · Headline: Clients served, and counting · Subhead: A Managed Intelligence Provider, recognized with the MSP Award 2025.</span></p>
+        <details><summary>Meta ad copy</summary>
+<div class="sub">Primary text</div><pre>500+ clients served, and the MSP Award 2025 for Best use of AI Technology.</pre>
+<div class="sub">Headline · Button</div><pre>500+ clients served · Learn More</pre>
+        </details>
+        <div class="claude-slot"></div>
+        <div class="notes-slot" data-notes="K16"></div>
+      </div>
+    </article>
+  </section>
+  <section>
+    <div class="sec-head"><h2>E · Split comparison</h2><p>4 ads</p></div>
+    <article class="piece" data-id="K17">
+      <div class="shots"><figure class="shot" style="max-width:440px"><img src="img/K17-v1.jpg" width="1080" height="1350" alt="K17: Looked after, not just fixed" loading="lazy"><figcaption>Feed 4:5 · 1080×1350</figcaption></figure></div>
+      <div class="info">
+        <div class="id-row"><span class="pid">K17</span><span class="chip ch">Managed Services</span></div>
+        <h3>Looked after, not just fixed</h3>
+        <div class="chips"><span class="chip">E · Split comparison</span><span class="chip">Facebook · Instagram · LinkedIn</span></div>
+        <p class="intext"><span class="k">On the image</span><span>Headline: Looked after, not just fixed · Subhead: Managed Services take care of your technology day to day. · Left: Fixed when it breaks / Work stops / Wait for help · Right: Managed Services / Ongoing IT care / 24/7 support · Button: Explore Managed Services</span></p>
+        <details><summary>Meta ad copy</summary>
+<div class="sub">Primary text</div><pre>Fixing IT only when it breaks means working around problems. Managed Services look after your technology day to day.</pre>
+<div class="sub">Headline · Button</div><pre>IT that&#x27;s looked after, not just fixed · Learn More</pre>
+        </details>
+        <div class="claude-slot"></div>
+        <div class="notes-slot" data-notes="K17"></div>
+      </div>
+    </article>
+    <article class="piece" data-id="K18">
+      <div class="shots"><figure class="shot" style="max-width:440px"><img src="img/K18-v1.jpg" width="1080" height="1350" alt="K18: IT help shouldn’t be a favor" loading="lazy"><figcaption>Feed 4:5 · 1080×1350</figcaption></figure></div>
+      <div class="info">
+        <div class="id-row"><span class="pid">K18</span><span class="chip ch">Managed Services</span></div>
+        <h3>IT help shouldn’t be a favor</h3>
+        <div class="chips"><span class="chip">E · Split comparison</span><span class="chip">Facebook · Instagram · LinkedIn</span></div>
+        <p class="intext"><span class="k">On the image</span><span>Headline: IT help shouldn’t be a favor · Subhead: Managed Services from a team that does this every day. · Left: A tech-savvy friend / When they have time / Fingers crossed · Right: A professional IT team / 24/7 support / 500+ clients served · Button: Get IT Support</span></p>
+        <details><summary>Meta ad copy</summary>
+<div class="sub">Primary text</div><pre>A tech-savvy friend is great, until they&#x27;re busy. Our Managed Services team offers 24/7 support.</pre>
+<div class="sub">Headline · Button</div><pre>IT support that isn&#x27;t a favor · Contact Us</pre>
+        </details>
+        <div class="claude-slot"></div>
+        <div class="notes-slot" data-notes="K18"></div>
+      </div>
+    </article>
+    <article class="piece" data-id="K19">
+      <div class="shots"><figure class="shot" style="max-width:440px"><img src="img/K19-v1.jpg" width="1080" height="1350" alt="K19: Made for everyone, or for you?" loading="lazy"><figcaption>Feed 4:5 · 1080×1350</figcaption></figure></div>
+      <div class="info">
+        <div class="id-row"><span class="pid">K19</span><span class="chip ch">Custom Software</span></div>
+        <h3>Made for everyone, or for you?</h3>
+        <div class="chips"><span class="chip">E · Split comparison</span><span class="chip">Facebook · Instagram · LinkedIn</span></div>
+        <p class="intext"><span class="k">On the image</span><span>Headline: Made for everyone, or for you? · Subhead: Custom software fits your business, not the other way around. · Left: Off-the-shelf software / Built for everyone / You work around it · Right: Custom software / Built for your business / It works around you · Button: See What’s Possible</span></p>
+        <details><summary>Meta ad copy</summary>
+<div class="sub">Primary text</div><pre>Off-the-shelf software is built for everyone. We build custom web, mobile and AI software for your business.</pre>
+<div class="sub">Headline · Button</div><pre>Custom software, made for you · Learn More</pre>
+        </details>
+        <div class="claude-slot"></div>
+        <div class="notes-slot" data-notes="K19"></div>
+      </div>
+    </article>
+    <article class="piece" data-id="K20">
+      <div class="shots"><figure class="shot" style="max-width:440px"><img src="img/K20-v1.jpg" width="1080" height="1350" alt="K20: Licensing, without going it alone" loading="lazy"><figcaption>Feed 4:5 · 1080×1350</figcaption></figure></div>
+      <div class="info">
+        <div class="id-row"><span class="pid">K20</span><span class="chip ch">Microsoft Licensing</span></div>
+        <h3>Licensing, without going it alone</h3>
+        <div class="chips"><span class="chip">E · Split comparison</span><span class="chip">Facebook · Instagram · LinkedIn</span></div>
+        <p class="intext"><span class="k">On the image</span><span>Headline: Licensing, without going it alone · Subhead: Microsoft 365, Dynamics, Power BI and Azure, with a team to ask. · Left: On your own / Sort through plans / Hope it fits · Right: With Simplicity Software / A team to ask / Based in Chesterfield · Button: Ask About Licensing</span></p>
+        <details><summary>Meta ad copy</summary>
+<div class="sub">Primary text</div><pre>Microsoft licensing doesn&#x27;t have to be a solo project. We license 365, Dynamics, Power BI and Azure.</pre>
+<div class="sub">Headline · Button</div><pre>Ask us about Microsoft licensing · Contact Us</pre>
+        </details>
+        <div class="claude-slot"></div>
+        <div class="notes-slot" data-notes="K20"></div>
+      </div>
+    </article>
+  </section>
+
+  <footer>Vector illustrations and local composition. Nothing is posted or sent without your OK.</footer>
+</div>
+
+<script>
+window.__NOTES__ = {};
+</script>
+
+<script src="../config.js"></script>
+<script src="../review.js"></script>
+</body>
+</html>
