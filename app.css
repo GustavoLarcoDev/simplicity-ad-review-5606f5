@@ -33,7 +33,7 @@ button{font:inherit}
 .top{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;padding:22px 0 16px}
 .top .back{font-weight:600;text-decoration:none}
 .top h1{font-size:clamp(24px,4vw,34px);font-weight:900;flex:1 1 260px}
-.who{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted)}
+.who{display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-size:13px;color:var(--muted)}
 .who input{font:inherit;font-size:14px;width:150px;padding:7px 10px;border-radius:9px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink)}
 .sync{font-size:12.5px;color:var(--muted)}
 .banner{margin:0 0 14px;padding:12px 14px;border-radius:12px;border:1.5px solid var(--warn);background:var(--warn-soft);font-size:14px}
@@ -83,6 +83,13 @@ button{font:inherit}
 .batch{font-size:12px;color:var(--muted);font-weight:600}
 .tile h3{font-size:15.5px;line-height:1.25}
 .tile .by{font-size:12px;color:var(--muted);min-height:1em}
+.tile.done{opacity:.55}
+.ribbon{font-size:12px;font-weight:700;color:var(--new);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ribbon[data-kind="final"]{color:var(--ok)} .ribbon[data-kind="descartada"]{color:var(--out)}
+.filed{font-size:13px;font-weight:700;color:var(--ok)}
+.link{background:none;border:0;padding:0;color:var(--accent);font:inherit;font-size:12.5px;font-weight:600;text-decoration:underline;cursor:pointer}
+.hint{font-size:12.5px;color:var(--out);font-weight:600}
+.who .hint{flex-basis:100%}
 .actions{display:grid;grid-template-columns:repeat(3,1fr) auto;gap:6px;padding:0 12px 12px}
 .act{padding:7px 0;border-radius:9px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);font-weight:700;font-size:13px;cursor:pointer}
 .act:hover{border-color:var(--ink)}
@@ -91,6 +98,7 @@ button{font:inherit}
 .act[aria-pressed="true"][data-v="out"]{background:var(--out-soft);border-color:var(--out);color:var(--out)}
 .act.focus{padding:7px 12px;background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
 .act:disabled{opacity:.5;cursor:not-allowed}
+.actions.locked{grid-template-columns:1fr auto auto;align-items:center}
 
 /* focus modal */
 dialog.focusbox{width:min(1180px,calc(100vw - 24px));max-height:calc(100vh - 24px);padding:0;border:1px solid var(--line);border-radius:18px;background:var(--surface);color:var(--ink);overflow:hidden}
@@ -129,12 +137,51 @@ details pre{margin:0;padding:0 12px 12px;white-space:pre-wrap;font:14px/1.55 var
 .decide label{font-size:13px;font-weight:600;color:var(--muted)}
 .decide textarea{font:inherit;font-size:14px;width:100%;min-height:84px;padding:9px 11px;border-radius:10px;border:1.5px solid var(--line);background:var(--inset);color:var(--ink);resize:vertical}
 .saved{font-size:12.5px;color:var(--muted);min-height:1.2em}
-.fb-nav{display:flex;justify-content:space-between;gap:8px}
+.filedrow{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.fb-who{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:13px;color:var(--muted)}
+.fb-who input{font:inherit;font-size:14px;width:150px;padding:7px 10px;border-radius:9px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink)}
+.statusrow{display:flex;gap:10px;align-items:center;flex-wrap:wrap;min-height:1.2em}
+.statusrow .by{font-size:12.5px;color:var(--muted)}
+.confirm{display:inline-flex;gap:6px;align-items:center;font-size:12.5px}
+.confirm button{padding:3px 10px;border-radius:999px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);font-size:12.5px;font-weight:700;cursor:pointer}
+.fb-bar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding-top:4px}
+.fb-bar .send{padding:9px 18px;font-size:14px;min-height:42px}
+.fb-bar .phoneclose{display:none}
+.fb-nav{display:flex;justify-content:space-between;gap:8px;margin-left:auto}
 .fb-nav button{padding:8px 14px;border-radius:10px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);font-weight:700;cursor:pointer}
 .fb-nav button:disabled{opacity:.4;cursor:default}
+
+/* bottom bars: short notices + the persistent "was NOT saved" list (moved inside the dialog while it is open) */
+.bars{position:fixed;left:0;right:0;bottom:0;z-index:50;display:flex;flex-direction:column;gap:8px;align-items:center;padding:0 16px calc(12px + env(safe-area-inset-bottom,0px));pointer-events:none}
+dialog.focusbox .bars{bottom:auto;top:0;padding:calc(10px + env(safe-area-inset-top,0px)) 16px 0}
+.bars>*{pointer-events:auto;width:min(720px,100%);border-radius:12px;box-shadow:var(--shadow);font-size:14px}
+.notice{display:flex;gap:10px;align-items:center;padding:10px 12px 10px 14px;background:var(--ink);color:var(--surface)}
+.notice span{flex:1}
+.notice .x{background:none;border:0;color:inherit;font-size:16px;cursor:pointer;padding:2px 6px}
+.errbar{display:flex;flex-direction:column;gap:6px;padding:10px 14px;background:var(--out-soft);border:1.5px solid var(--out);color:var(--ink)}
+.errbar .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.errbar .msg{flex:1;font-weight:700;color:var(--out)}
+.errbar .dot{color:var(--muted)}
+.errbar button{padding:5px 12px;border-radius:999px;border:1.5px solid var(--out);background:var(--surface);color:var(--out);font-weight:700;font-size:13px;cursor:pointer}
 
 @media (max-width:860px){
   .fb{grid-template-columns:1fr;overflow:auto}
   .fb-media,.fb-info{overflow:visible}
   .fb-media img,.fb-media video{max-height:60vh}
+}
+@media (max-width:720px){
+  dialog.focusbox{width:calc(100vw - 16px);max-height:calc(100vh - 16px);max-height:calc(100dvh - 16px)}
+  .fb{max-height:calc(100vh - 16px);max-height:calc(100dvh - 16px)}
+  .fb-media{padding:12px}
+  .fb-media img,.fb-media video{max-height:45vh;max-height:45dvh}
+  .fb-info{padding:14px 16px 0}
+  /* decision bar pinned to the bottom of the dialog: Accept/Adjust/Reject (moved here by JS), Send, Previous/Next, close */
+  .fb-bar{position:sticky;bottom:0;z-index:3;margin:6px -16px 0;padding:10px 12px calc(10px + env(safe-area-inset-bottom,0px));background:var(--surface);border-top:1px solid var(--line);box-shadow:0 -8px 20px rgba(0,0,0,.08)}
+  .fb-bar .seg{flex:1 1 100%;gap:6px} .fb-bar .seg .act{flex:1;padding:9px 4px}
+  .fb-bar .send{flex:1 1 100%}
+  .fb-bar .act,.fb-bar .fb-nav button,.fb-bar .phoneclose{min-height:44px}
+  .fb-bar .phoneclose{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px}
+  .fb-nav{flex:1}
+  .fb-nav button{flex:1}
+  /* notices + error bar while the dialog is open: at the top, never over the sticky decision bar */
 }
